@@ -28,7 +28,7 @@ function rendreData(testData) {
     testData.forEach(entry => {
       let html = '';
       html    += '<div class="results__category results__category--' + entry.category.toLowerCase() + '">';
-      html    += '<img src="' + entry.icon + '" class="category-icon" />';
+      html    += '<img src="' + entry.icon + '" class="category-icon" alt="Category Icon"/>';
       html    += '<h4>' + entry.category + '</h4><span ><b>' + entry.score + '</b> / 100</span></div>';
       resultCategoriesElem.innerHTML += html;
       dataScores += entry.score;
