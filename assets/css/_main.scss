@@ -1,0 +1,150 @@
+@use './resets.scss';
+@use './vars.scss';
+@use './results-card.scss';
+
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url(../fonts/HankenGrotesk-VariableFont_wght.ttf);
+}
+
+@mixin flex-centered() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-column() {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+
+body {
+  background: $white;
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Hanken Grotesk', sans-serif;
+  
+  @include flex-centered();
+
+  border: 1px solid $dark-gray-blue;
+}
+
+.display-none {
+  display: none;
+  opacity: 0;
+}
+
+
+.results__container {
+  // max-width: 46rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  justify-content: center;
+
+  font-size: 1.125rem;
+  border-radius: $border-rad;
+
+  box-shadow: 10px 10px 50px 5px $light-lavender;
+
+  h3 {
+    font-weight: 700;
+    font-size: 1.3rem;
+  }
+}
+
+.results__category {
+
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  padding: 0.6rem 1rem;
+
+  display: flex;
+  align-items: center;
+
+  * {
+    z-index: 3;
+  }
+  
+  &:before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    border-radius: .4rem;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    border-radius: .5rem;
+  }
+
+  img {
+    aspect-ratio: 1/1;
+    height: 1.5rem;
+    margin-inline-end: .5rem;
+  }
+
+  span {
+    color: $dark-gray-blue;
+    margin-left: auto;
+  }
+
+  &--reaction {
+    color: $ight-red;
+    &:before {
+      background-color: hsl(0, 100%, 15%);
+    }
+    &:after {
+      background-color: hsl(0, 100%, 95%);
+    }
+  }
+  &--memory {
+    color: $lemon;
+    &:before {
+      background-color: adjust-color($lemon, $lightness: 15%);
+    }
+    &:after {
+      background-color: adjust-color($lemon, $lightness: 90%);
+    }
+  }
+  &--verbal {
+    color: $green-teal;
+  }
+  &--visual {
+    color: $cobalt;
+  }
+}
+
+.btn {
+  align-self: center;
+  width: 100%;
+  border-radius: $border-rad;
+  background-color: $dark-gray-blue;
+  color: $white;
+  padding: 1rem 2rem;
+  text-align: center;
+}
+
+.attribution {
+  position: fixed;
+  color: $dark-gray-blue;
+  bottom: 1rem;
+  left: 1rem;
+}
